@@ -13,7 +13,7 @@ public class LoginLogoutObjects {
 	
 	@FindBy(id="loginButton")
 	public WebElement loginButton;
-	
+	 
 	@FindBy(id="")
 	public WebElement logoutButton;
 	
