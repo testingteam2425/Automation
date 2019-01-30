@@ -16,5 +16,8 @@ public class LoginLogoutObjects {
 	
 	@FindBy(id="")
 	public WebElement logoutButton;
+	
+	@FindBy(id="")
+	public WebElement forgetPassword;
 
 }
