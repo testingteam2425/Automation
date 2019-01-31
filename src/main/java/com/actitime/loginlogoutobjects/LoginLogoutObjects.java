@@ -7,7 +7,7 @@ public class LoginLogoutObjects {
 	
 	@FindBy(name="username")
 	public WebElement username;
-	
+
 	@FindBy(name="pwd")
 	public WebElement password;
 	

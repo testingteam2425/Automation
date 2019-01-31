@@ -3,6 +3,7 @@ package com.automation.utils;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import com.automation.base.BaseClass;
@@ -37,6 +38,11 @@ public class SeleniumCore extends BaseClass{
 		} catch (Exception e) {
 			logStatusFail("Clicking on "+elementName,getScreenshot("Error  While clicking on "+elementName));
 		}
+	}
+	public void elementNotClickable(WebElement element) {
+		JavascriptExecutor js1=((JavascriptExecutor)driver);
+		js1.executeScript("arguments[0].click();",element);
+	  
 	}
 	
 
