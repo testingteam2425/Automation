@@ -12,7 +12,9 @@ public class ReportsDashboardUtils extends BaseClass{
 	public SeleniumUtils seleniumutils;
 
 	public ReportsDashboardUtils() {
+		
 		seleniumcore=PageFactory.initElements(driver, SeleniumCore.class);
+		
 		seleniumutils=PageFactory.initElements(driver, SeleniumUtils.class);
 	}
 
