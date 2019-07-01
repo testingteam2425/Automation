@@ -1,0 +1,11 @@
+package com.java.stringprograms;
+
+public class RevesrStirngSbrCls {
+	
+	public static void main(String[] args) {
+		
+		StringBuffer  sbr = new StringBuffer("java language");
+		System.out.println(sbr.reverse());
+	}
+
+}
