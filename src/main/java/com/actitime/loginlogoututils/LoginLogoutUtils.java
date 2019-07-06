@@ -1,5 +1,7 @@
 package com.actitime.loginlogoututils;
 
+import java.io.IOException;
+
 import org.openqa.selenium.support.PageFactory;
 
 import com.actitime.loginlogoutobjects.LoginLogoutObjects;
@@ -16,13 +18,13 @@ public class LoginLogoutUtils extends BaseClass{
 		loginlogoutobjects=PageFactory.initElements(driver, LoginLogoutObjects.class);
 	}
 
-	public void loginCredentials(String username,String password) {
+	public void loginCredentials(String username,String password) throws Exception {
 		seleniumcore.enterTextBoxValue(loginlogoutobjects.username, username);
 		seleniumcore.enterTextBoxValue(loginlogoutobjects.password, password);
 		seleniumcore.clickonElement(loginlogoutobjects.loginButton, "Login");
 	}
 	
-	public void logoutApplication() {
+	public void logoutApplication() throws IOException {
 		seleniumcore.clickonElement(loginlogoutobjects.logoutButton, "Login");
 	}
 }

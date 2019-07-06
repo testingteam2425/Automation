@@ -14,13 +14,22 @@ public class LoginLogoutObjects {
 	@FindBy(id="loginButton")
 	public WebElement loginButton;
 	
+	@FindBy(id="Dashboard")
+	public WebElement homepage;
+	
 	@FindBy(id="")
 	public WebElement logoutButton;
 	
 	@FindBy(id="")
 	public WebElement forgetPassword;
 	
+	@FindBy(id="")
+	public WebElement VerifyHeader;
+	
 	@FindBy(xpath="//span[text()='Username or Password is invalid. Please try again.']")
 	public WebElement errormessgae;
+	
+	@FindBy(id="")
+	public WebElement VerifyFooter;
 
 }
