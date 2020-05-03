@@ -11,15 +11,13 @@ public class BaseClass {
 
 	public static WebDriver driver;
 	public static Properties prob;
-	public static Properties testDataProb;
+	public static Properties  testDataProb;
 
 
 	public void initbrowser() throws IOException{
 
 		loadConfigFile("C:\\Users\\talla\\eclipse-workspace\\NEW_MAVEN\\src\\test\\resources\\config\\config.properties");
 		loadConfigTestDataFile("C:\\Users\\talla\\eclipse-workspace\\NEW_MAVEN\\src\\test\\resources\\config\\testData.properties");
-
-
 
 		if (prob.getProperty("browser").equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver","C:\\Users\\talla\\Downloads\\Drivers\\chromedriver.exe");
