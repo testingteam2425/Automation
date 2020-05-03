@@ -1,49 +1,38 @@
 package com.automation.utils;
 
-import java.io.IOException;
-
-import org.apache.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import com.automation.base.BaseClass;
-import com.relevantcodes.extentreports.LogStatus;
+
 
 public class SeleniumCore extends BaseClass{
 
-	Logger logger = Logger.getLogger(SeleniumCore.class);
+	public void enterText(String locator,String value) {
+		driver.findElement(By.xpath(locator)).sendKeys(value);	
+	}
 
-	/* 
-	 * Enter text in text box 
-	 */
-	public void enterTextBoxValue(WebElement element, String value) throws Exception {
-		try {
-			element.clear();
-			element.sendKeys(value);
-			logger.info("Enter value is :::: "+value);
-			testReportChild.log(LogStatus.PASS, "Entering Value "+value, value+" Entered successfully");
-		}catch (Exception e) {
-			logStatusFail("Entering Value "+value,getScreenshot("Error while entering value "));
+	public void enterText(String locatorType,String locator, String value) {
+		if (locatorType.equalsIgnoreCase("xpath")) {
+			driver.findElement(By.xpath(locator)).sendKeys(value);	
+		}else if (locatorType.equalsIgnoreCase("id")) {
+			driver.findElement(By.id(locator)).sendKeys(value);	
+		}else if (locatorType.equalsIgnoreCase("name")) {
+			driver.findElement(By.name(locator)).sendKeys(value);	
+
 		}
+
+	}
+	public void clickOnElement(String locator) {
+		driver.findElement(By.xpath(locator)).click();
 	}
 
-	/*
-	 * Click on element 
-	 */
-	public void clickonElement(WebElement element, String elementName) throws IOException {
-		try {
-			element.click();
-			logger.info(elementName+ " element is  cliecked sucessfully....... ");
-			logStatusPass("Clicking on "+elementName, elementName+" Clicked Successfully");
-		} catch (Exception e) {
-			logStatusFail("Clicking on "+elementName,getScreenshot("Error  While clicking on "+elementName));
-		}
+	public void SelectVisibleText(String locator,String visibleText) {
+		WebElement element=driver.findElement(By.xpath(locator));
+		Select select=new Select(element);
+		select.selectByVisibleText(visibleText);
 	}
-	public void elementNotClickable(WebElement element) {
-		JavascriptExecutor js1=((JavascriptExecutor)driver);
-		js1.executeScript("arguments[0].click();",element);
-	  
-	}
-	
-
 }
+
+

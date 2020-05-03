@@ -10,7 +10,7 @@ public class Config {
 	
 	public static String proFilePath=System.getProperty("user.dir")+"/src/main/resources/config/config.properties";
 	public static Properties props;
-	public static Config config;
+	public static Config  config;
 	
 	public Config() throws FileNotFoundException, IOException {
 		props=new Properties();
