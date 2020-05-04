@@ -14,6 +14,9 @@ public class LoginLogoutObjects {
 	@FindBy(id="loginButton")
 	public WebElement loginButton;
 	
+	@FindBy(id="loginButton1")
+	public WebElement loginButton1;
+	
 	@FindBy(id="Dashboard")
 	public WebElement homepage;
 	
