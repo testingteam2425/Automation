@@ -12,5 +12,6 @@ public class ReportsDashboardObjects {
 	@FindBy(name="username")
 	public WebElement userna;
 	
+	
 }
 
