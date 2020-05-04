@@ -8,10 +8,9 @@ public class ReportsDashboardObjects {
 	@FindBy(name="username")
 	public WebElement username;
 	
-	@FindBy(name="password")
-	public WebElement password;
-	
+		
 	@FindBy(name="username")
 	public WebElement userna;
 	
 }
+
