@@ -11,7 +11,7 @@ public class BaseClass {
 
 	public static WebDriver driver;
 	public static Properties prob;
-	public static Properties  testDataProb;
+	public static Properties testDataProb;
 
 
 	public void initbrowser() throws IOException{
