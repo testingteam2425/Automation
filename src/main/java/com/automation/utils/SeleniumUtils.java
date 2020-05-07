@@ -28,8 +28,8 @@ public class SeleniumUtils extends BaseClass{
 		actions.moveToElement(menuelement).build().perform();
 		WebElement subelement=driver.findElement(By.xpath(submenulocator));
 		actions.moveToElement(subelement).build().perform();
-		//WebElement subsubElement=driver.findElement(By.xpath(subssubmenulocator));
-		//actions.click(subsubElement).build().perform();
+		WebElement subsubElement=driver.findElement(By.xpath(subssubmenulocator));
+		actions.click(subsubElement).build().perform();
 	}
 
 	public void moveToSubSubElement(String menulocator,String submenulocator, String subssubmenulocator) {
