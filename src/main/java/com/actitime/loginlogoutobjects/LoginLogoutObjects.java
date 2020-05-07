@@ -21,5 +21,8 @@ public class LoginLogoutObjects {
 	public WebElement titlename;
 	
 	@FindBy(xpath="")
+	public WebElement sahitya;
+	
+	@FindBy(xpath="")
 	public WebElement logoutbutton;
 }
