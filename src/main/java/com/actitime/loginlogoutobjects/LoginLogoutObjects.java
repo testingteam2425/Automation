@@ -10,6 +10,9 @@ public class LoginLogoutObjects {
 
 	@FindBy(id="")
 	public WebElement password;
+	
+	@FindBy(id="")
+	public WebElement password1;
 
 	@FindBy(xpath="")
 	public WebElement loginbutton;
