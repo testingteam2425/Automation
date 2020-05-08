@@ -25,4 +25,16 @@ public class LoginLogoutObjects {
 	
 	@FindBy(xpath="")
 	public WebElement logoutbutton;
+	
+	@FindBy(xpath="")
+	public WebElement goivndddddddddddddddddddddd;
+	
+	@FindBy(xpath="")
+	public WebElement rajaaaaaaaaaaaaaaaaaaa;
+	
+	@FindBy(xpath="")
+	public WebElement swamyyyyyyyyyyyyyyy;
+	
+	
+	
 }
