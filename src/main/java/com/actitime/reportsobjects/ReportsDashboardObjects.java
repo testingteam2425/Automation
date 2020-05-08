@@ -8,4 +8,12 @@ public class ReportsDashboardObjects {
 	public void govind()
 	{}
 	
+	public void raja()
+	{}
+	public void raj1()
+	
+	{
+	
+	}
+	
 }
