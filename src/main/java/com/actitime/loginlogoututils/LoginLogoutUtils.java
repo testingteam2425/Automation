@@ -14,4 +14,8 @@ public class LoginLogoutUtils extends BaseClass{
 	public void mean1() {
 		
 	}
+	@Test
+	public void mean2() {
+		
+	}
 }
