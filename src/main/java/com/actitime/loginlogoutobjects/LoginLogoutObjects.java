@@ -36,7 +36,10 @@ public class LoginLogoutObjects {
 	public WebElement swamyyyyyyyyyyyyyyy;
 	
 	@FindBy(xpath="")
+	public WebElement aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa;
+	@FindBy(xpath="")
 	public WebElement getcurrenturl;
+	
 	
 	@FindBy(xpath="")
 	public WebElement getpagetitle;
