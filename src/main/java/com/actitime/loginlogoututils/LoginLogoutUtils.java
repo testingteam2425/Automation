@@ -1,30 +1,26 @@
 package com.actitime.loginlogoututils;
 
-import org.testng.annotations.Test;
-
+import com.actitime.loginlogoutobjects.LoginLogoutObjects;
 import com.automation.base.BaseClass;
+import com.automation.utils.SeleniumCore;
 
 public class LoginLogoutUtils extends BaseClass{
-	@Test
-	public void mean() {
-		
+
+	public SeleniumCore seleniumCore;
+	public LoginLogoutObjects loginLogoutObjects;
+
+	public LoginLogoutUtils() {
+		seleniumCore=new SeleniumCore();
+		loginLogoutObjects=new LoginLogoutObjects();
 	}
-	
-	@Test
-	public void mean1() {
-		
+
+
+	public void applicationLogin(String username, String password) {
+		seleniumCore.enterText(loginLogoutObjects.username, username);
+		seleniumCore.enterText(loginLogoutObjects.password, password);
+		seleniumCore.clickOnElement(loginLogoutObjects.loginbutton);
+
+
 	}
-	@Test
-	public void mean2() {
-		
-	}
-	
-	@Test
-	public void mean3() {
-		
-	}
-	
-	
-	
-	
+
 }
