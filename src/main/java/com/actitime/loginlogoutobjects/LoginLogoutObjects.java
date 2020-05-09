@@ -26,23 +26,4 @@ public class LoginLogoutObjects {
 	@FindBy(xpath="")
 	public WebElement logoutbutton;
 	
-	@FindBy(xpath="")
-	public WebElement goivndddddddddddddddddddddd;
-	
-	@FindBy(xpath="")
-	public WebElement rajaaaaaaaaaaaaaaaaaaa;
-	
-	@FindBy(xpath="")
-	public WebElement swamyyyyyyyyyyyyyyy;
-	
-	@FindBy(xpath="")
-	public WebElement aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa;
-	@FindBy(xpath="")
-	public WebElement getcurrenturl;
-	
-	
-	@FindBy(xpath="")
-	public WebElement getpagetitle;
-	@FindBy(xpath="")
-	public WebElement getpage;
 }
