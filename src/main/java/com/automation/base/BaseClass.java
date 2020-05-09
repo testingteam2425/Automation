@@ -6,6 +6,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseClass {
 
@@ -16,16 +17,16 @@ public class BaseClass {
 	public static String currentDir = System.getProperty("user.dir");
 	public void initbrowser() throws IOException{
 
-		loadConfigFile(currentDir+"\\src\\test\\resources\\config\\config.properties");
-		loadConfigTestDataFile(currentDir+"\\src\\test\\resources\\config\\testData.properties");
+		loadConfigFile(currentDir+"\\src\\main\\resources\\config\\config.properties");
+		//loadConfigTestDataFile(currentDir+"\\src\\test\\resources\\config\\testData.properties");
 
-		if (prob.getProperty("browser").equalsIgnoreCase("chrome")) {
+		if (prob.getProperty("Browser").equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver","C:\\Users\\talla\\Downloads\\Drivers\\chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
-		}else if(prob.getProperty("browser").equalsIgnoreCase("Firefox")) {
+		}else if(prob.getProperty("Browser").equalsIgnoreCase("Firefox")) {
 			System.setProperty("webdriver.gecko.driver","C:\\Users\\talla\\Downloads\\Drivers\\geckodriver.exe");
-			driver = new ChromeDriver();
+			driver = new FirefoxDriver();
 			driver.manage().window().maximize();
 		}else {
 			System.out.println("Browser is not implemented");
