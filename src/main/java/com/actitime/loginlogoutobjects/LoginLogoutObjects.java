@@ -5,25 +5,27 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginLogoutObjects {
 
-	@FindBy(name="username")
+	@FindBy(id="email")
 	public WebElement username;
 
-	@FindBy(xpath="//input[@name='pwd']")
+	@FindBy(xpath="//input[@name='pass']")
 	public WebElement password;
 	
-	@FindBy(id="")
-	public WebElement password1;
+	/*@FindBy(id="")
+	public WebElement password1;*/
 
 	@FindBy(id="loginButton")
 	public WebElement loginbutton;
 	
-	@FindBy(xpath="")
+	
+	
+	/*@FindBy(xpath="")
 	public WebElement titlename;
 	
 	@FindBy(xpath="")
 	public WebElement sahitya;
 	
 	@FindBy(xpath="")
-	public WebElement logoutbutton;
+	public WebElement logoutbutton;*/
 	
-}
+	}
