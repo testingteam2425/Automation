@@ -9,27 +9,20 @@ import com.actitime.loginlogoututils.LoginLogoutUtils;
 import com.automation.base.BaseClass;
 
 public class LoginLogoutScripts extends BaseClass{
-	
-	LoginLogoutUtils loginlogoututil;
-	
+
+	public LoginLogoutUtils loginlogoutUtils;
+
+
 	@Test
-	public void logintest() throws IOException, InterruptedException
-	{
+	public void loginPage() throws IOException {
 		initbrowser();
-		Thread.sleep(3000);
-		loginlogoututil.login("GOVIND","RAJA");
-		
-		
+		loginlogoutUtils.applicationLogin("admin", "manager");
+
 	}
-	
 
 	@BeforeClass
-	public void loading()
-	{
-		loginlogoututil = new LoginLogoutUtils();
+	public void loading() {
+		loginlogoutUtils=new LoginLogoutUtils();
+
 	}
-	
-	
-	
-	
 }
