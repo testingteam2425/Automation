@@ -5,10 +5,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class LoginLogoutObjects {
 
-	@FindBy(id="email")
+	@FindBy(name="username")
 	public WebElement username;
 
-	@FindBy(xpath="//input[@name='pass']")
+	@FindBy(name="pwd") 
 	public WebElement password;
 	
 	/*@FindBy(id="")
