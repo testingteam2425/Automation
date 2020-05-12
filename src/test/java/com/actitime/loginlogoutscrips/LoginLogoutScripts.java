@@ -2,6 +2,7 @@ package com.actitime.loginlogoutscrips;
 
 import java.io.IOException;
 
+import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -14,15 +15,16 @@ public class LoginLogoutScripts extends BaseClass{
 
 
 	@Test
-	public void loginPage() throws IOException {
-		initbrowser();
+	
+	public void loginPage() throws Exception {
+		
 		loginlogoutUtils.applicationLogin("admin", "manager");
 
 	}
 
 	@BeforeClass
 	public void loading() {
-		loginlogoutUtils=new LoginLogoutUtils();
+		loginlogoutUtils=PageFactory.initElements(driver,LoginLogoutUtils.class );
 
 	}
 }
