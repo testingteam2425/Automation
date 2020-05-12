@@ -10,22 +10,8 @@ public class LoginLogoutObjects {
 
 	@FindBy(name="pwd") 
 	public WebElement password;
-	
-	/*@FindBy(id="")
-	public WebElement password1;*/
 
 	@FindBy(id="loginButton")
 	public WebElement loginbutton;
-	
-	
-	
-	/*@FindBy(xpath="")
-	public WebElement titlename;
-	
-	@FindBy(xpath="")
-	public WebElement sahitya;
-	
-	@FindBy(xpath="")
-	public WebElement logoutbutton;*/
-	
-	}
+
+}
