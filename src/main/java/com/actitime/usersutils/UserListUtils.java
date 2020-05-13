@@ -20,9 +20,10 @@ public class UserListUtils extends BaseClass{
 	}
 
 	public void clickOnUsersMenu() {
-		seleniumcore.clickOnElement(userListObjects.usersmenu);
+	//	seleniumcore.clickOnElement(userListObjects.usersmenu);
+		seleniumutils.javascriptclickmethod(userListObjects.usersmenu);
 	}
-
+	
 	public void clickOnCreateNewUser() {
 		seleniumcore.clickOnElement(userListObjects.createNewUser);
 	}
