@@ -1,7 +1,5 @@
 package com.actitime.loginlogoutscrips;
 
-import java.io.IOException;
-
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
