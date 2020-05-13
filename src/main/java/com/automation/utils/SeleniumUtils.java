@@ -1,6 +1,7 @@
 package com.automation.utils;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -11,6 +12,7 @@ import com.automation.base.BaseClass;
 
 public class SeleniumUtils extends BaseClass{
 	Actions actions;
+	JavascriptExecutor js = (JavascriptExecutor)driver;
 
 	public void pressEnterKey() {
 		actions=new Actions(driver);
@@ -40,5 +42,9 @@ public class SeleniumUtils extends BaseClass{
 		actions.moveToElement(subelement).build().perform();
 		WebElement subsubElement=driver.findElement(By.xpath(subssubmenulocator));
 		actions.click(subsubElement).build().perform();
+	}
+	public void javascriptclickmethod(WebElement createNewUser1)
+	{
+		 js.executeScript("arguments[0].click();", createNewUser1);
 	}
 }
