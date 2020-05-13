@@ -10,13 +10,13 @@ public class UserListObjects {
 	 */
 	@FindBy(xpath="//div[text()='Users']")
 	public WebElement usersmenu;
-
+	
 	/*
 	 * User List Page
 	 */
 	@FindBy(xpath="//input[@value='Create New User']")
 	public WebElement createNewUser;
-
+	
 	/*
 	 * Login Information
 	 */
