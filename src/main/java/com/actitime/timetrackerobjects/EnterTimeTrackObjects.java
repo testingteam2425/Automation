@@ -5,12 +5,12 @@ import org.openqa.selenium.support.FindBy;
 
 public class EnterTimeTrackObjects {
 	
-	
-	
-	@FindBy(name="usersSelector.selectedUser")
+	//@FindBy(name="usersSelector.selectedUser")
+	@FindBy(xpath="//td[text()='Enter Time-Track']/following::select[@name='usersSelector.selectedUser']")
 	public WebElement enterTimeTrackerDropdown;
 	
-	@FindBy(xpath="//a[text()='Create new tasks']")
+	//@FindBy(xpath="//a[text()='Create new tasks']")
+	@FindBy(xpath="//img[@src='/img/default/add_new_tasks.gif?hash=1692528820']")
 	public WebElement createNewtaskLink;
 	
 	@FindBy(name="customerId")
@@ -28,10 +28,10 @@ public class EnterTimeTrackObjects {
 	@FindBy(name="task[0].billingType")
 	public WebElement billingTypeDropdown;
 	
-	@FindBy(xpath="//input[@value='Create Tasks']")
+	@FindBy(xpath="//input[@type='button' and @value='Create Tasks']")
 	public WebElement createTaskButton;
 	
+		
 	
 	
-
 }
