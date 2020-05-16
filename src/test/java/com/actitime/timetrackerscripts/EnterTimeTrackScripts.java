@@ -24,10 +24,12 @@ public class EnterTimeTrackScripts extends BaseClass{
 	@Test 
 	public void enterTimeTrackDetails() throws Exception {
 		loginlogoutUtils.applicationLogin("admin", "manager");
-		enterTimeTrackUtils.selectValueEnterTimeTrackerDropdown("harshita");
+		//enterTimeTrackUtils.selectValueEnterTimeTrackerDropdown("raja, govind (a)");
+		Thread.sleep(5000);
 		enterTimeTrackUtils.clickOnCreateNewTask();
-		enterTimeTrackUtils.selectCustomerAndProjectDropdown("harshita", "actitime");
-		enterTimeTrackUtils.enterFillIntaskInformation("harshita", "may 20, 2020", "");
+		enterTimeTrackUtils.windowhandles();
+		enterTimeTrackUtils.selectCustomerAndProjectDropdown("gov", "ra");
+		enterTimeTrackUtils.enterFillIntaskInformation("This is myyyyy task");//, "", "");//may 20, 2020", "");
 		enterTimeTrackUtils.clickOnCreateTaskButton();
 
 	}
