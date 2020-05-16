@@ -1,5 +1,8 @@
 package com.actitime.timetrackerutils;
 
+import java.util.Iterator;
+import java.util.Set;
+
 import org.openqa.selenium.support.PageFactory;
 
 import com.actitime.timetrackerobjects.EnterTimeTrackObjects;
@@ -19,18 +22,18 @@ public class EnterTimeTrackUtils extends BaseClass{
 		enterTimeTrackObjects=PageFactory.initElements(driver, EnterTimeTrackObjects.class);
 	}
 
-	public void selectValueEnterTimeTrackerDropdown(String value) {
+	/*public void selectValueEnterTimeTrackerDropdown(String value) {
 		seleniumcore.SelectVisibleText(enterTimeTrackObjects.enterTimeTrackerDropdown, value); 
-	}
+	}*/
 
 	public void clickOnCreateNewTask() {
 		seleniumcore.clickOnElement(enterTimeTrackObjects.createNewtaskLink);
 	}
 
-	public void enterFillIntaskInformation(String taskname, String deadlinevalue, String billingtype) {
+	public void enterFillIntaskInformation(String taskname) {//, String deadlinevalue, String billingtype) {
 		seleniumcore.enterText(enterTimeTrackObjects.taskNameTextbox, taskname);
-		seleniumcore.enterText(enterTimeTrackObjects.deadlineTextbox, deadlinevalue);
-		seleniumcore.SelectVisibleText(enterTimeTrackObjects.billingTypeDropdown, billingtype); 
+		//seleniumcore.enterText(enterTimeTrackObjects.deadlineTextbox, deadlinevalue);
+		//seleniumcore.SelectVisibleText(enterTimeTrackObjects.billingTypeDropdown, billingtype); 
 	}
 
 	public void selectCustomerAndProjectDropdown(String customerId, String projectId) {
@@ -42,4 +45,16 @@ public class EnterTimeTrackUtils extends BaseClass{
 		seleniumcore.clickOnElement(enterTimeTrackObjects.createTaskButton);
 	}
 
-}
+	public void windowhandles()  {
+		Set<String> allwindows = driver.getWindowHandles();
+		Iterator<String> it = allwindows.iterator();
+		String parent=it.next();
+		String child=it.next();
+		driver.switchTo().window(child);
+	}
+	
+	
+	
+	
+	
+}	
