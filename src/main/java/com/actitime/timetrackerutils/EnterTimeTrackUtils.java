@@ -22,18 +22,19 @@ public class EnterTimeTrackUtils extends BaseClass{
 		enterTimeTrackObjects=PageFactory.initElements(driver, EnterTimeTrackObjects.class);
 	}
 
-	/*public void selectValueEnterTimeTrackerDropdown(String value) {
+	public void selectValueEnterTimeTrackerDropdown(String value) {
 		seleniumcore.SelectVisibleText(enterTimeTrackObjects.enterTimeTrackerDropdown, value); 
-	}*/
+	}
 
 	public void clickOnCreateNewTask() {
 		seleniumcore.clickOnElement(enterTimeTrackObjects.createNewtaskLink);
 	}
 
-	public void enterFillIntaskInformation(String taskname) {//, String deadlinevalue, String billingtype) {
+	public void enterFillIntaskInformation(String taskname, String deadlinevalue, String billingtype) {
+		
 		seleniumcore.enterText(enterTimeTrackObjects.taskNameTextbox, taskname);
-		//seleniumcore.enterText(enterTimeTrackObjects.deadlineTextbox, deadlinevalue);
-		//seleniumcore.SelectVisibleText(enterTimeTrackObjects.billingTypeDropdown, billingtype); 
+		seleniumcore.enterText(enterTimeTrackObjects.deadlineTextbox, deadlinevalue);
+		seleniumcore.SelectVisibleText(enterTimeTrackObjects.billingTypeDropdown, billingtype); 
 	}
 
 	public void selectCustomerAndProjectDropdown(String customerId, String projectId) {
@@ -42,7 +43,8 @@ public class EnterTimeTrackUtils extends BaseClass{
 	}
 
 	public void clickOnCreateTaskButton() {
-		seleniumcore.clickOnElement(enterTimeTrackObjects.createTaskButton);
+		//seleniumcore.clickOnElement(enterTimeTrackObjects.createTaskButton);
+		seleniumutils.javascriptclickmethod(enterTimeTrackObjects.createTaskButton);
 	}
 
 	public void windowhandles()  {
@@ -52,9 +54,5 @@ public class EnterTimeTrackUtils extends BaseClass{
 		String child=it.next();
 		driver.switchTo().window(child);
 	}
-	
-	
-	
-	
-	
+		
 }	
