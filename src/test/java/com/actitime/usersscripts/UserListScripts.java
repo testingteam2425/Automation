@@ -1,5 +1,7 @@
 package com.actitime.usersscripts;
 
+import java.util.Map;
+
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -7,11 +9,15 @@ import org.testng.annotations.Test;
 import com.actitime.loginlogoututils.LoginLogoutUtils;
 import com.actitime.usersutils.UserListUtils;
 import com.automation.base.BaseClass;
+import com.automation.utils.ExcelReader;
 
 public class UserListScripts extends BaseClass{
 	
 	public LoginLogoutUtils loginlogoutUtils;
 	public UserListUtils userListUtils;
+	public static ExcelReader reader = ExcelReader.getInstance(currentDir+"\\src\\main\\resources\\TestDataFiles\\TestDataSheet.xls");
+	Map<String, String> applicationLoginSheet;
+	Map<String, String> userListSheet;
 	
 	@BeforeClass
 	public void loading() {
@@ -22,16 +28,38 @@ public class UserListScripts extends BaseClass{
 
 	@Test
 	public void loginPage() throws Exception {	
-		loginlogoutUtils.applicationLogin("admin", "manager");
+		
+		/*
+		 * Data coming from ApplicationLogin sheet
+		 */
+		applicationLoginSheet=reader.getRowValue("ValidCredentilas", "ApplicationLogin");
+		String username = applicationLoginSheet.get("username");
+		String password = applicationLoginSheet.get("password");
+		
+		/*
+		 * Data coming from UserList sheet 
+		 */
+		userListSheet=reader.getRowValue("CreateNewUser", "UserList");
+		String newUserName = userListSheet.get("NewUserName");
+		String newPassWord = userListSheet.get("NewPassword");
+		String newReTypepassWord = userListSheet.get("NewReTypepassWord");
+		String firstName = userListSheet.get("FirstName");
+		String lastName = userListSheet.get("LastName");
+		
+		/*
+		 * Enter Username and Password with valid data
+		 */
+		loginlogoutUtils.applicationLogin(username, password);
 		Thread.sleep(5000);
+		
+		/*
+		 * Creating newUser with new data
+		 */
 		userListUtils.clickOnUsersMenu();
 		userListUtils.clickOnCreateNewUser();
-		userListUtils.enterLoginInformation("harshita", "", "harshita25", "harshita25");
-		userListUtils.enterContactInformation("harshita", "boppay");
+		userListUtils.enterLoginInformation(newUserName, "", newPassWord, newReTypepassWord);
+		userListUtils.enterContactInformation(firstName, lastName);
 		userListUtils.clickOnCreateUserButton();
+		
 	}
-	
-	
-
-	
 }
