@@ -32,7 +32,7 @@ public class UserListScripts extends BaseClass{
 		/*
 		 * Data coming from ApplicationLogin sheet
 		 */
-		applicationLoginSheet=reader.getRowValue("ValidCredentilas", "ApplicationLogin");
+		applicationLoginSheet=reader.getRowValue("ValidCredentials", "ApplicationLogin");
 		String username = applicationLoginSheet.get("username");
 		String password = applicationLoginSheet.get("password");
 		
