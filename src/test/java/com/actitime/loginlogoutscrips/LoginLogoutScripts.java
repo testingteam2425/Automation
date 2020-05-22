@@ -19,7 +19,7 @@ public class LoginLogoutScripts extends BaseClass{
 	@BeforeClass
 	public void loading() {
 		loginlogoutUtils=PageFactory.initElements(driver,LoginLogoutUtils.class );
-		testdata=reader.getRowValue("ValidCredentilas", "ApplicationLogin");
+		testdata=reader.getRowValue("ValidCredentials", "ApplicationLogin");
 	}
 	
 	@Test
