@@ -26,7 +26,7 @@ public class UserListScripts extends BaseClass{
 	}
 
 
-	@Test
+	@Test(invocationCount = 5)
 	public void loginPage() throws Exception {	
 		
 		/*
@@ -40,11 +40,11 @@ public class UserListScripts extends BaseClass{
 		 * Data coming from UserList sheet 
 		 */
 		userListSheet=reader.getRowValue("CreateNewUser", "UserList");
-		String newUserName = userListSheet.get("NewUserName");
+		String newUserName = userListSheet.get("NewUserName")+getCurrentTimeStamp();
 		String newPassWord = userListSheet.get("NewPassword");
 		String newReTypepassWord = userListSheet.get("NewReTypepassWord");
-		String firstName = userListSheet.get("FirstName");
-		String lastName = userListSheet.get("LastName");
+		String firstName = userListSheet.get("FirstName")+getCurrentTimeStamp();
+		String lastName = userListSheet.get("LastName")+getCurrentTimeStamp();
 		
 		/*
 		 * Enter Username and Password with valid data
