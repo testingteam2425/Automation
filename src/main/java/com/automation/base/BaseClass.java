@@ -2,11 +2,12 @@ package com.automation.base;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeSuite;
 
 public class BaseClass {
@@ -28,7 +29,7 @@ public class BaseClass {
 			driver.manage().window().maximize();
 		}else if(prob.getProperty("Browser").equalsIgnoreCase("Firefox")) {
 			System.setProperty("webdriver.gecko.driver",currentDir+"/src/main/resources/browserDetails/geckodriver.exe");
-			driver = new FirefoxDriver();
+			//driver = new FirefoxDriver();
 			driver.manage().window().maximize();
 		}else {
 			System.out.println("Browser is not implemented");
@@ -48,5 +49,11 @@ public class BaseClass {
 		testDataProb=new Properties();
 		testDataProb.load(fls);
 	}
+	
+	public String getCurrentTimeStamp(){
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyyHHmmss");
+        return  sdf.format(date);
+    } 
 
 }
