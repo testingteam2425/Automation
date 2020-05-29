@@ -143,4 +143,40 @@ public class ExcelReader {
 		}
 	}
 
+	public void gettingdata(String sheetName) {
+		final HSSFSheet sheet = getSheet(sheetName);
+		final List<String> coulmnNames = getColumns(sheet);
+		final int totalRows = sheet.getPhysicalNumberOfRows();
+		System.out.println(totalRows);
+		final HSSFRow row = sheet.getRow(0);
+		final int firstCellNum = row.getFirstCellNum();
+		final int lastCellNum = row.getLastCellNum();
+		System.out.println(lastCellNum);	
+		for (int i = 0; i < totalRows; i++) {
+			for (int j = 0; j < lastCellNum; j++) {
+				HSSFCell cell =sheet.getRow(i).getCell(j);
+				if (cell == null || cell.getCellType() == Cell.CELL_TYPE_BLANK) {
+					System.out.println("");
+				} else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
+					final Double val = cell.getNumericCellValue();
+					Object value = cell.getNumericCellValue();
+					System.out.println(value);
+				} else if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
+					String text =cell.getStringCellValue();
+					System.out.println(text);
+				} else if (cell.getCellType() == Cell.CELL_TYPE_BOOLEAN
+						|| cell.getCellType() == Cell.CELL_TYPE_ERROR
+						|| cell.getCellType() == Cell.CELL_TYPE_FORMULA) {
+					throw new RuntimeException(
+							" Cell Type is not supported ");
+				}}
+		}
+	}
+	
+	
+	
+	public static void main(String[] args) throws FileNotFoundException {
+		ExcelReader excelreader = new ExcelReader("E:\\seleni_gopi\\TestDataSheetRegister.xls");
+		excelreader.gettingdata("Register");
+	}
 }
