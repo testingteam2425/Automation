@@ -143,40 +143,46 @@ public class ExcelReader {
 		}
 	}
 
+	static Map<Integer, String> rowData;
+	List<String> rowValue;
+
 	public void gettingdata(String sheetName) {
+		rowData = new HashMap<Integer, String>();
+		rowValue = new ArrayList<String>();
 		final HSSFSheet sheet = getSheet(sheetName);
-		final List<String> coulmnNames = getColumns(sheet);
 		final int totalRows = sheet.getPhysicalNumberOfRows();
 		System.out.println(totalRows);
 		final HSSFRow row = sheet.getRow(0);
-		final int firstCellNum = row.getFirstCellNum();
 		final int lastCellNum = row.getLastCellNum();
 		System.out.println(lastCellNum);	
 		for (int i = 0; i < totalRows; i++) {
 			for (int j = 0; j < lastCellNum; j++) {
 				HSSFCell cell =sheet.getRow(i).getCell(j);
 				if (cell == null || cell.getCellType() == Cell.CELL_TYPE_BLANK) {
-					System.out.println("");
+					rowValue.add("");
 				} else if (cell.getCellType() == Cell.CELL_TYPE_NUMERIC) {
-					final Double val = cell.getNumericCellValue();
 					Object value = cell.getNumericCellValue();
-					System.out.println(value);
+					rowValue.add(value.toString());
 				} else if (cell.getCellType() == Cell.CELL_TYPE_STRING) {
 					String text =cell.getStringCellValue();
-					System.out.println(text);
+					rowValue.add(text.trim());
 				} else if (cell.getCellType() == Cell.CELL_TYPE_BOOLEAN
 						|| cell.getCellType() == Cell.CELL_TYPE_ERROR
 						|| cell.getCellType() == Cell.CELL_TYPE_FORMULA) {
 					throw new RuntimeException(
 							" Cell Type is not supported ");
-				}}
+				}
+
+			}
+			rowData.put(i, rowValue.toString());
 		}
 	}
-	
-	
-	
+
+
+
 	public static void main(String[] args) throws FileNotFoundException {
-		ExcelReader excelreader = new ExcelReader("E:\\seleni_gopi\\TestDataSheetRegister.xls");
+		ExcelReader excelreader = new ExcelReader("C:\\Users\\rkakumani\\git\\Automation\\src\\main\\resources\\TestDataFiles\\TestDataSheetRegister.xls");
 		excelreader.gettingdata("Register");
+		System.out.print(rowData);
 	}
 }
