@@ -143,8 +143,8 @@ public class ExcelReader {
 		}
 	}
 
-	static Map<Integer, String> rowData;
-	List<String> rowValue;
+	public static Map<Integer, String> rowData;
+	public static List<String> rowValue;
 
 	public void gettingdata(String sheetName) {
 		rowData = new HashMap<Integer, String>();
@@ -155,7 +155,7 @@ public class ExcelReader {
 		final HSSFRow row = sheet.getRow(0);
 		final int lastCellNum = row.getLastCellNum();
 		System.out.println(lastCellNum);	
-		for (int i = 0; i < totalRows; i++) {
+		for (int i = 1; i < totalRows; i++) {
 			for (int j = 0; j < lastCellNum; j++) {
 				HSSFCell cell =sheet.getRow(i).getCell(j);
 				if (cell == null || cell.getCellType() == Cell.CELL_TYPE_BLANK) {
@@ -175,14 +175,24 @@ public class ExcelReader {
 
 			}
 			rowData.put(i, rowValue.toString());
+			rowValue.clear();
 		}
 	}
-
 
 
 	public static void main(String[] args) throws FileNotFoundException {
 		ExcelReader excelreader = new ExcelReader("C:\\Users\\rkakumani\\git\\Automation\\src\\main\\resources\\TestDataFiles\\TestDataSheetRegister.xls");
 		excelreader.gettingdata("Register");
 		System.out.print(rowData);
+		for(Map.Entry<Integer, String> entry : rowData.entrySet()) {
+			System.out.println(entry.getValue());
+			String value=entry.getValue().substring(1, entry.getValue().length()-1);
+			String[] temp = value.split(",");
+			for (int i = 0; i < temp.length; i++) {
+				System.out.println(temp[i].trim());
+				
+			}
+			
+		}
 	}
 }
