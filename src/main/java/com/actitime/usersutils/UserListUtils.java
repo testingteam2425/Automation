@@ -1,5 +1,7 @@
 package com.actitime.usersutils;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import com.actitime.usersobjects.UserListObjects;
@@ -43,4 +45,42 @@ public class UserListUtils extends BaseClass{
 		seleniumcore.clickOnElement(userListObjects.createuserbutton);
 	}
 
+	public void clickOnTableLink(String user) {
+		WebElement element = driver.findElement(By.xpath("//a[contains(text(),'"+user+"')]"));
+		seleniumcore.clickOnElement(element);
+	}
+
+	public void clickOnSavechangesButton() {
+		seleniumcore.clickOnElement(userListObjects.Savechangesbutton);
+	}
+	
+	public void clickOnDeleteuserButton() {
+		seleniumcore.clickOnElement(userListObjects.Deleteuserbutton);
+	}
+	
+	
+	public void verifyCreatedUserDetails(String username,String firstname,String lastname) {
+		String fetchUsername = userListObjects.username.getAttribute("value");
+		if (fetchUsername.equalsIgnoreCase(username)) {
+			System.out.println(fetchUsername+" and "+username+" both is same ");
+		} else {
+			System.out.println(fetchUsername+" and "+username+" both is not same ");
+		}
+		
+		
+		String fetchFirstname = userListObjects.firstname.getAttribute("value");
+		if (fetchFirstname.equalsIgnoreCase(firstname)) {
+			System.out.println(fetchFirstname+" and "+firstname+" both is same ");
+		} else {
+			System.out.println(fetchFirstname+" and "+firstname+" both is not same ");
+		}
+		
+		
+		String fetchLastname = userListObjects.lastname.getAttribute("value");
+		if (fetchLastname.equalsIgnoreCase(lastname)) {
+			System.out.println(fetchLastname+" and "+lastname+" both is same ");
+		} else {
+			System.out.println(fetchLastname+" and "+lastname+" both is not same ");
+		}
+	}
 }
