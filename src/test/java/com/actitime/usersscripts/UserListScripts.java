@@ -18,6 +18,7 @@ public class UserListScripts extends BaseClass{
 	public static ExcelReader reader = ExcelReader.getInstance(currentDir+"\\src\\main\\resources\\TestDataFiles\\TestDataSheet.xls");
 	Map<String, String> applicationLoginSheet;
 	Map<String, String> userListSheet;
+	String updatedUsername;
 	
 	@BeforeClass
 	public void loading() {
@@ -26,8 +27,8 @@ public class UserListScripts extends BaseClass{
 	}
 
 
-	@Test(invocationCount = 5)
-	public void loginPage() throws Exception {	
+	@Test(priority=1)
+	public void createUser() throws Exception {	
 		
 		/*
 		 * Data coming from ApplicationLogin sheet
@@ -62,4 +63,106 @@ public class UserListScripts extends BaseClass{
 		userListUtils.clickOnCreateUserButton();
 		
 	}
+	
+	@Test(priority=2)
+	public void readUser() throws Exception {	
+		
+		/*
+		 * Data coming from ApplicationLogin sheet
+		 */
+		applicationLoginSheet=reader.getRowValue("ValidCredentials", "ApplicationLogin");
+		String username = applicationLoginSheet.get("username");
+		String password = applicationLoginSheet.get("password");
+		
+		/*
+		 * Data coming from UserList sheet 
+		 */
+		userListSheet=reader.getRowValue("CreateNewUser", "UserList");
+		String newUserName = userListSheet.get("NewUserName")+getCurrentTimeStamp();
+		String firstName = userListSheet.get("FirstName")+getCurrentTimeStamp();
+		String lastName = userListSheet.get("LastName")+getCurrentTimeStamp();
+		
+		/*
+		 * Enter Username and Password with valid data
+		 */
+		loginlogoutUtils.applicationLogin(username, password);
+		Thread.sleep(5000);
+		
+		/*
+		 * Creating newUser with new data
+		 */
+		userListUtils.clickOnUsersMenu();
+		userListUtils.clickOnTableLink(newUserName);
+		userListUtils.verifyCreatedUserDetails(newUserName, firstName, lastName);
+			
+	}
+	@Test(priority=3)
+	public void updateUser() throws Exception {	
+		
+		/*
+		 * Data coming from ApplicationLogin sheet
+		 */
+		applicationLoginSheet=reader.getRowValue("ValidCredentials", "ApplicationLogin");
+		String username = applicationLoginSheet.get("username");
+		String password = applicationLoginSheet.get("password");
+		
+		/*
+		 * Data coming from UserList sheet 
+		 */
+		userListSheet=reader.getRowValue("CreateNewUser", "UserList");
+		String newUserName = userListSheet.get("NewUserName")+getCurrentTimeStamp();
+		String newPassWord = userListSheet.get("NewPassword");
+		String newReTypepassWord = userListSheet.get("NewReTypepassWord");
+		String firstName = userListSheet.get("FirstName")+getCurrentTimeStamp();
+		String lastName = userListSheet.get("LastName")+getCurrentTimeStamp();
+		updatedUsername = "auto"+newUserName;
+		
+		/*
+		 * Enter Username and Password with valid data
+		 */
+		loginlogoutUtils.applicationLogin(username, password);
+		Thread.sleep(5000);
+		
+		/*
+		 * Creating newUser with new data
+		 */
+		userListUtils.clickOnUsersMenu();
+		userListUtils.clickOnTableLink(newUserName);
+		userListUtils.enterLoginInformation(updatedUsername, "", newPassWord, newReTypepassWord);
+		userListUtils.enterContactInformation("update"+firstName,"update"+lastName);
+		userListUtils.clickOnSavechangesButton();
+		
+	}
+	
+	@Test(priority=4)
+	public void deleteUser() throws Exception {	
+		
+		/*
+		 * Data coming from ApplicationLogin sheet
+		 */
+		applicationLoginSheet=reader.getRowValue("ValidCredentials", "ApplicationLogin");
+		String username = applicationLoginSheet.get("username");
+		String password = applicationLoginSheet.get("password");
+		
+		/*
+		 * Data coming from UserList sheet 
+		 */
+		userListSheet=reader.getRowValue("CreateNewUser", "UserList");
+		
+		
+		/*
+		 * Enter Username and Password with valid data
+		 */
+		loginlogoutUtils.applicationLogin(username, password);
+		Thread.sleep(5000);
+		
+		/*
+		 * Creating newUser with new data
+		 */
+		userListUtils.clickOnUsersMenu();
+		userListUtils.clickOnTableLink(updatedUsername);
+		userListUtils.clickOnDeleteuserButton();
+		
+	}
+	
 }
