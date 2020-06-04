@@ -180,19 +180,4 @@ public class ExcelReader {
 	}
 
 
-	public static void main(String[] args) throws FileNotFoundException {
-		ExcelReader excelreader = new ExcelReader("C:\\Users\\rkakumani\\git\\Automation\\src\\main\\resources\\TestDataFiles\\TestDataSheetRegister.xls");
-		excelreader.gettingdata("Register");
-		System.out.print(rowData);
-		for(Map.Entry<Integer, String> entry : rowData.entrySet()) {
-			System.out.println(entry.getValue());
-			String value=entry.getValue().substring(1, entry.getValue().length()-1);
-			String[] temp = value.split(",");
-			for (int i = 0; i < temp.length; i++) {
-				System.out.println(temp[i].trim());
-				
-			}
-			
-		}
-	}
 }
