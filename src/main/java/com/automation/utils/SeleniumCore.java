@@ -10,6 +10,7 @@ public class SeleniumCore extends BaseClass{
 
 	
 	public void enterText(WebElement locator,String value) {
+		locator.clear();
 		locator.sendKeys(value);
 
 	}
