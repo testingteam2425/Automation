@@ -46,5 +46,22 @@ public class UserListObjects {
 	 */
 	@FindBy(xpath="//input[@value='   Create User   ']")
 	public WebElement createuserbutton;
-
+	
+	/*
+	 * 	UserListTablerow Link 
+	 */
+	@FindBy(xpath="//a[contains(text(),'raja')]")
+	public WebElement Userlisttablerow;
+	
+	/*
+	 * 	UserListSaveChanges button 
+	 */
+	@FindBy(xpath="//input[@value='  Save Changes  ']")
+	public WebElement Savechangesbutton;
+	
+	/*
+	 * 
+	 */
+     @FindBy(xpath="//input[@value='Delete This User']")
+     public WebElement Deleteuserbutton;
 }
