@@ -58,6 +58,9 @@ public class UserListUtils extends BaseClass{
 		seleniumcore.clickOnElement(userListObjects.Deleteuserbutton);
 	}
 	
+	public void clickOnLogoutButton() {
+		seleniumcore.clickOnElement(userListObjects.Logoutbuttton);
+	}
 	
 	public void verifyCreatedUserDetails(String username,String firstname,String lastname) {
 		String fetchUsername = userListObjects.username.getAttribute("value");
