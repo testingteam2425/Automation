@@ -19,6 +19,7 @@ public class UserListScripts extends BaseClass{
 	Map<String, String> applicationLoginSheet;
 	Map<String, String> userListSheet;
 	String updatedUsername;
+	String newUserName;
 	
 	@BeforeClass
 	public void loading() {
@@ -41,7 +42,7 @@ public class UserListScripts extends BaseClass{
 		 * Data coming from UserList sheet 
 		 */
 		userListSheet=reader.getRowValue("CreateNewUser", "UserList");
-		String newUserName = userListSheet.get("NewUserName")+getCurrentTimeStamp();
+		newUserName = userListSheet.get("NewUserName")+getCurrentTimeStamp();
 		String newPassWord = userListSheet.get("NewPassword");
 		String newReTypepassWord = userListSheet.get("NewReTypepassWord");
 		String firstName = userListSheet.get("FirstName")+getCurrentTimeStamp();
@@ -61,7 +62,8 @@ public class UserListScripts extends BaseClass{
 		userListUtils.enterLoginInformation(newUserName, "", newPassWord, newReTypepassWord);
 		userListUtils.enterContactInformation(firstName, lastName);
 		userListUtils.clickOnCreateUserButton();
-		
+		Thread.sleep(5000);
+		userListUtils.clickOnLogoutButton();		
 	}
 	
 	@Test(priority=2)
@@ -78,7 +80,6 @@ public class UserListScripts extends BaseClass{
 		 * Data coming from UserList sheet 
 		 */
 		userListSheet=reader.getRowValue("CreateNewUser", "UserList");
-		String newUserName = userListSheet.get("NewUserName")+getCurrentTimeStamp();
 		String firstName = userListSheet.get("FirstName")+getCurrentTimeStamp();
 		String lastName = userListSheet.get("LastName")+getCurrentTimeStamp();
 		
@@ -94,8 +95,10 @@ public class UserListScripts extends BaseClass{
 		userListUtils.clickOnUsersMenu();
 		userListUtils.clickOnTableLink(newUserName);
 		userListUtils.verifyCreatedUserDetails(newUserName, firstName, lastName);
-			
+		Thread.sleep(5000);
+		userListUtils.clickOnLogoutButton();			
 	}
+	
 	@Test(priority=3)
 	public void updateUser() throws Exception {	
 		
@@ -110,12 +113,11 @@ public class UserListScripts extends BaseClass{
 		 * Data coming from UserList sheet 
 		 */
 		userListSheet=reader.getRowValue("CreateNewUser", "UserList");
-		String newUserName = userListSheet.get("NewUserName")+getCurrentTimeStamp();
 		String newPassWord = userListSheet.get("NewPassword");
 		String newReTypepassWord = userListSheet.get("NewReTypepassWord");
 		String firstName = userListSheet.get("FirstName")+getCurrentTimeStamp();
 		String lastName = userListSheet.get("LastName")+getCurrentTimeStamp();
-		updatedUsername = "auto"+newUserName;
+		updatedUsername = "auto"+userListSheet.get("NewUserName");
 		
 		/*
 		 * Enter Username and Password with valid data
@@ -131,7 +133,8 @@ public class UserListScripts extends BaseClass{
 		userListUtils.enterLoginInformation(updatedUsername, "", newPassWord, newReTypepassWord);
 		userListUtils.enterContactInformation("update"+firstName,"update"+lastName);
 		userListUtils.clickOnSavechangesButton();
-		
+		Thread.sleep(5000);
+		userListUtils.clickOnLogoutButton();
 	}
 	
 	@Test(priority=4)
