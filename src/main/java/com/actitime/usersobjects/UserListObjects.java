@@ -64,4 +64,11 @@ public class UserListObjects {
 	 */
      @FindBy(xpath="//input[@value='Delete This User']")
      public WebElement Deleteuserbutton;
+     
+    /*
+ 	 * 
+ 	 */
+      @FindBy(xpath="//a[text()='Logout']")
+      public WebElement Logoutbuttton;
+     
 }
