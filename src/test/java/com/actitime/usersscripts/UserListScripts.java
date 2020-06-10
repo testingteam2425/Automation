@@ -117,8 +117,7 @@ public class UserListScripts extends BaseClass{
 		String newReTypepassWord = userListSheet.get("NewReTypepassWord");
 		String firstName = userListSheet.get("FirstName")+getCurrentTimeStamp();
 		String lastName = userListSheet.get("LastName")+getCurrentTimeStamp();
-		updatedUsername = "auto"+newUserName;  
-		//updateUsername = "auto"+userListSheet.get("NewUserName");
+		updatedUsername = "auto"+userListSheet.get("NewUserName");
 		
 		/*
 		 * Enter Username and Password with valid data
