@@ -3,6 +3,8 @@ package com.actitime.usersutils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import com.actitime.usersobjects.UserListObjects;
 import com.automation.base.BaseClass;
@@ -22,10 +24,10 @@ public class UserListUtils extends BaseClass{
 	}
 
 	public void clickOnUsersMenu() {
-	//	seleniumcore.clickOnElement(userListObjects.usersmenu);
+		//	seleniumcore.clickOnElement(userListObjects.usersmenu);
 		seleniumutils.javascriptclickmethod(userListObjects.usersmenu);
 	}
-	
+
 	public void clickOnCreateNewUser() {
 		seleniumcore.clickOnElement(userListObjects.createNewUser);
 	}
@@ -35,12 +37,12 @@ public class UserListUtils extends BaseClass{
 		seleniumcore.enterText(userListObjects.password, password);
 		seleniumcore.enterText(userListObjects.retypepassword, retypepassword);
 	}
-	
+
 	public void enterContactInformation(String firstname, String lastname) {
 		seleniumcore.enterText(userListObjects.firstname, firstname);
 		seleniumcore.enterText(userListObjects.lastname, lastname);
 	}
-	
+
 	public void clickOnCreateUserButton() {
 		seleniumcore.clickOnElement(userListObjects.createuserbutton);
 	}
@@ -53,15 +55,15 @@ public class UserListUtils extends BaseClass{
 	public void clickOnSavechangesButton() {
 		seleniumcore.clickOnElement(userListObjects.Savechangesbutton);
 	}
-	
+
 	public void clickOnDeleteuserButton() {
 		seleniumcore.clickOnElement(userListObjects.Deleteuserbutton);
 	}
-	
+
 	public void clickOnLogoutButton() {
 		seleniumcore.clickOnElement(userListObjects.Logoutbuttton);
 	}
-	
+
 	public void verifyCreatedUserDetails(String username,String firstname,String lastname) {
 		String fetchUsername = userListObjects.username.getAttribute("value");
 		if (fetchUsername.equalsIgnoreCase(username)) {
@@ -69,16 +71,16 @@ public class UserListUtils extends BaseClass{
 		} else {
 			System.out.println(fetchUsername+" and "+username+" both is not same ");
 		}
-		
-		
+
+
 		String fetchFirstname = userListObjects.firstname.getAttribute("value");
 		if (fetchFirstname.equalsIgnoreCase(firstname)) {
 			System.out.println(fetchFirstname+" and "+firstname+" both is same ");
 		} else {
 			System.out.println(fetchFirstname+" and "+firstname+" both is not same ");
 		}
-		
-		
+
+
 		String fetchLastname = userListObjects.lastname.getAttribute("value");
 		if (fetchLastname.equalsIgnoreCase(lastname)) {
 			System.out.println(fetchLastname+" and "+lastname+" both is same ");
@@ -86,4 +88,27 @@ public class UserListUtils extends BaseClass{
 			System.out.println(fetchLastname+" and "+lastname+" both is not same ");
 		}
 	}
+
+	public void verifyUserDetails(String username,String firstname,String lastname) {
+		String fetchUsername = userListObjects.username.getAttribute("value");
+		String fetchFirstname = userListObjects.firstname.getAttribute("value");
+		String fetchLastname = userListObjects.lastname.getAttribute("value");
+
+		Assert.assertEquals(username, fetchUsername);
+		Assert.assertEquals(firstname, fetchFirstname);
+		Assert.assertEquals(lastname, fetchLastname);
+	}
+
+	SoftAssert softassert = new SoftAssert();
+	public void verifyUserDetails_SoftAssert(String username,String firstname,String lastname) {
+		String fetchUsername = userListObjects.username.getAttribute("value");
+		String fetchFirstname = userListObjects.firstname.getAttribute("value");
+		String fetchLastname = userListObjects.lastname.getAttribute("value");
+
+		softassert.assertEquals(username, fetchUsername);
+		softassert.assertEquals(firstname, fetchFirstname);
+		softassert.assertEquals(lastname, fetchLastname);
+		softassert.assertAll();
+	}
+
 }
