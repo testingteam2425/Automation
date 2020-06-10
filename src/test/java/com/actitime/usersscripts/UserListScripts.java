@@ -66,7 +66,7 @@ public class UserListScripts extends BaseClass{
 		userListUtils.clickOnLogoutButton();		
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2,dependsOnMethods="createUser")
 	public void readUser() throws Exception {	
 		
 		/*
@@ -94,12 +94,12 @@ public class UserListScripts extends BaseClass{
 		 */
 		userListUtils.clickOnUsersMenu();
 		userListUtils.clickOnTableLink(newUserName);
-		userListUtils.verifyCreatedUserDetails(newUserName, firstName, lastName);
+		userListUtils.verifyUserDetails(newUserName, "gopikrishna", lastName);
 		Thread.sleep(5000);
 		userListUtils.clickOnLogoutButton();			
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3,dependsOnMethods="readUser")
 	public void updateUser() throws Exception {	
 		
 		/*
@@ -117,7 +117,8 @@ public class UserListScripts extends BaseClass{
 		String newReTypepassWord = userListSheet.get("NewReTypepassWord");
 		String firstName = userListSheet.get("FirstName")+getCurrentTimeStamp();
 		String lastName = userListSheet.get("LastName")+getCurrentTimeStamp();
-		updatedUsername = "auto"+userListSheet.get("NewUserName");
+		updatedUsername = "auto"+newUserName;  
+		//updateUsername = "auto"+userListSheet.get("NewUserName");
 		
 		/*
 		 * Enter Username and Password with valid data
@@ -137,7 +138,7 @@ public class UserListScripts extends BaseClass{
 		userListUtils.clickOnLogoutButton();
 	}
 	
-	@Test(priority=4)
+	@Test(priority=4,dependsOnMethods="updateUser")
 	public void deleteUser() throws Exception {	
 		
 		/*
