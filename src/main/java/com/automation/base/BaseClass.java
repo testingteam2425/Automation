@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.BeforeSuite;
 
 public class BaseClass {
@@ -21,7 +22,7 @@ public class BaseClass {
 	@BeforeSuite
 	public void initbrowser() throws IOException{
 
-		loadConfigFile(currentDir+"\\src\\main\\resources\\config\\config.properties");
+	//	loadConfigFile(currentDir+"\\src\\main\\resources\\config\\config.properties");
 
 		if (prob.getProperty("Browser").equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver",currentDir+"\\src\\main\\resources\\browserDetails\\chromedriver.exe");
@@ -29,7 +30,7 @@ public class BaseClass {
 			driver.manage().window().maximize();
 		}else if(prob.getProperty("Browser").equalsIgnoreCase("Firefox")) {
 			System.setProperty("webdriver.gecko.driver",currentDir+"/src/main/resources/browserDetails/geckodriver.exe");
-			//driver = new FirefoxDriver();
+			driver = new FirefoxDriver();
 			driver.manage().window().maximize();
 		}else {
 			System.out.println("Browser is not implemented");
